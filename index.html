@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>For Youuuu</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family: 'DM Sans', sans-serif;
+
+      color: #633e4d;
+
+      background:
+        radial-gradient(circle at 20% 20%,
+          rgba(255, 255, 255, .85),
+          transparent 30%),
+        radial-gradient(circle at 80% 80%,
+          rgba(255, 214, 226, .7),
+          transparent 30%),
+        linear-gradient(135deg,
+          #ffe8ef,
+          #fff5f7);
+
+      overflow: hidden;
+    }
+
+
+    /* =========================
+       FLOATING HEARTS
+    ========================= */
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      overflow: hidden;
+
+      z-index: 0;
+    }
+
+
+    .heart {
+      position: absolute;
+
+      bottom: -40px;
+
+      color: rgba(236, 119, 153, .25);
+
+      animation: floatUp linear infinite;
+    }
+
+
+    @keyframes floatUp {
+
+      from {
+        transform:
+          translateY(0) rotate(0deg);
+
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      to {
+        transform:
+          translateY(-115vh) rotate(360deg);
+
+        opacity: 0;
+      }
+
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .container {
+
+      position: relative;
+
+      z-index: 1;
+
+      width: min(700px, 90%);
+
+      text-align: center;
+    }
+
+
+    .small-title {
+
+      color: #d87998;
+
+      font-size: .85rem;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      font-weight: 700;
+
+      margin-bottom: 25px;
+    }
+
+
+    h1 {
+
+      font-family: 'Playfair Display', serif;
+
+      font-size: clamp(3rem,
+          12vw,
+          7rem);
+
+      line-height: 1;
+
+      color: #633e4d;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 25px;
+    }
+
+
+    /* =========================
+       CLOCK
+    ========================= */
+
+    #clock {
+
+      font-size: clamp(4.5rem,
+          18vw,
+          9rem);
+
+      font-weight: 500;
+
+      letter-spacing: 5px;
+
+      color: #633e4d;
+
+      line-height: 1;
+
+      text-shadow:
+        0 10px 30px rgba(160, 91, 113, .12);
+    }
+
+
+    /* =========================
+       DATE
+    ========================= */
+
+    #date {
+
+      margin-top: 15px;
+
+      font-size: .95rem;
+
+      color: #98717f;
+    }
+
+
+    /* =========================
+       REMINDER
+    ========================= */
+
+    .reminder {
+
+      margin: 35px auto 0;
+
+      width: min(600px,
+          100%);
+
+      padding: 25px 30px;
+
+      background:
+        rgba(255, 255, 255, .65);
+
+      border:
+        1px solid rgba(255, 255, 255, .9);
+
+      border-radius: 25px;
+
+      box-shadow:
+        0 20px 60px rgba(160, 91, 113, .12);
+
+      backdrop-filter: blur(12px);
+
+      transition:
+        opacity .3s ease,
+        transform .3s ease;
+    }
+
+
+    .reminder-icon {
+
+      font-size: 2rem;
+
+      margin-bottom: 10px;
+    }
+
+
+    #reminder {
+
+      font-family:
+        'Playfair Display',
+        serif;
+
+      font-size: clamp(1.3rem,
+          4vw,
+          1.8rem);
+
+      line-height: 1.5;
+
+      color: #633e4d;
+    }
+
+
+    .hint {
+
+      margin-top: 12px;
+
+      font-size: .8rem;
+
+      color: #a47787;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+
+      margin-top: 30px;
+
+      font-size: .85rem;
+
+      color: #a47787;
+    }
+
+
+    .footer span {
+      color: #df6d93;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: 92%;
+      }
+
+      .small-title {
+        margin-bottom: 20px;
+      }
+
+      #clock {
+        letter-spacing: 2px;
+      }
+
+      .reminder {
+        padding: 22px 18px;
+        margin-top: 30px;
+      }
+
+      #reminder {
+        font-size: 1.3rem;
+      }
+
+    }
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- FLOATING HEARTS -->
+
+  <div class="hearts" id="hearts">
+  </div>
+
+
+  <main class="container">
+
+
+    <div class="small-title">
+      a little reminder for you
+    </div>
+
+
+    <!--
+      GANTI NAMA DI SINI
+    -->
+
+    <h1>
+      alooo kamuuu
+    </h1>
+
+
+    <!-- JAM -->
+
+    <div id="clock">
+      00:00
+    </div>
+
+
+    <!-- TANGGAL -->
+
+    <div id="date">
+      loading...
+    </div>
+
+
+    <!-- REMINDER -->
+
+    <div class="reminder">
+
+      <div class="reminder-icon" id="reminderIcon">
+        💗
+      </div>
+
+
+      <div id="reminder">
+        loading reminder...
+      </div>
+
+
+      <div class="hint">
+        jangan lupa jaga diri kamu yaa
+      </div>
+
+    </div>
+
+
+    <div class="footer">
+      dibuat khusus buat kamu
+      <span>♥</span>
+    </div>
+
+
+  </main>
+
+
+  <script>
+
+
+    /* =========================
+       REMINDER BERDASARKAN JAM
+    ========================= */
+
+
+    function getReminder(hour) {
+
+
+      /*
+       * PAGI
+       */
+
+      if (hour >= 6 && hour < 9) {
+
+        return {
+          icon: "🌤️",
+
+          text:
+            "selamat pagiii. jangan lupa sarapan yaa, biar kamu punya tenaga buat mulai hari ini. 🍚"
+        };
+
+      }
+
+
+      /*
+       * MAKAN SIANG
+       */
+
+      if (hour >= 11 && hour < 14) {
+
+        return {
+          icon: "🍚",
+
+          text:
+            "udah waktunya makan sianggg. jangan terlalu sibuk sampai lupa makan yaa. 🥺"
+        };
+
+      }
+
+
+      /*
+       * SORE
+       */
+
+      if (hour >= 14 && hour < 17) {
+
+        return {
+          icon: "🥤",
+
+          text:
+            "udah minum air belumm? istirahat sebentar juga bole kok, jangan dipaksa terus yaa. 🤍"
+        };
+
+      }
+
+
+      /*
+       * MAKAN MALAM
+       */
+
+      if (hour >= 17 && hour < 20) {
+
+        return {
+          icon: "🍽️",
+
+          text:
+            "jangan lupa makan malam yaa. hari ini kamu udah ngelakuin banyak hal, sekarang isi tenaga dulu. 💗"
+        };
+
+      }
+
+
+      /*
+       * MALAM / ISTIRAHAT
+       */
+
+      if (hour >= 20 && hour < 22) {
+
+        return {
+          icon: "🌙",
+
+          text:
+            "kalo udah mulai capek, istirahat dulu yaa. ngga harus terus produktif setiap saat."
+        };
+
+      }
+
+
+      /*
+       * WAKTU TIDUR
+       */
+
+      if (hour >= 22 || hour < 6) {
+
+        return {
+          icon: "🌙",
+
+          text:
+            "udah malemmm. sekarang waktunya istirahat yaa. tutup semuanya dan kasih diri kamu waktu buat tenang. 🤍"
+        };
+
+      }
+
+
+      /*
+       * DEFAULT
+       */
+
+      return {
+        icon: "💗",
+
+        text:
+          "jangan lupa makan, minum, dan istirahat yaa. kamu juga perlu dijaga."
+      };
+
+    }
+
+
+    /* =========================
+       UPDATE CLOCK
+    ========================= */
+
+
+    function updateClock() {
+
+
+      const now =
+        new Date();
+
+
+      const hour =
+        now.getHours();
+
+
+      const minute =
+        now.getMinutes();
+
+
+      /*
+       * JAM
+       */
+
+      const formattedHour =
+        String(hour).padStart(2, "0");
+
+
+      const formattedMinute =
+        String(minute).padStart(2, "0");
+
+
+      document
+        .getElementById("clock")
+        .textContent =
+        `${formattedHour}:${formattedMinute}`;
+
+
+      /*
+       * TANGGAL
+       */
+
+      const date =
+        now.toLocaleDateString(
+          "id-ID",
+          {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          }
+        );
+
+
+      document
+        .getElementById("date")
+        .textContent =
+        date;
+
+
+      /*
+       * REMINDER
+       */
+
+      const reminder =
+        getReminder(hour);
+
+
+      document
+        .getElementById("reminder")
+        .textContent =
+        reminder.text;
+
+
+      document
+        .getElementById("reminderIcon")
+        .textContent =
+        reminder.icon;
+
+    }
+
+
+    /* =========================
+       FLOATING HEARTS
+    ========================= */
+
+
+    function createFloatingHearts() {
+
+
+      const container =
+        document.getElementById(
+          "hearts"
+        );
+
+
+      for (
+        let i = 0;
+        i < 15;
+        i++
+      ) {
+
+
+        const heart =
+          document.createElement(
+            "div"
+          );
+
+
+        heart.className =
+          "heart";
+
+
+        heart.textContent =
+          Math.random() > .5
+            ? "♡"
+            : "♥";
+
+
+        heart.style.left =
+          Math.random() * 100 + "%";
+
+
+        heart.style.fontSize =
+          (
+            12 +
+            Math.random() * 20
+          ) + "px";
+
+
+        heart.style.animationDuration =
+          (
+            8 +
+            Math.random() * 12
+          ) + "s";
+
+
+        heart.style.animationDelay =
+          (
+            -Math.random() * 15
+          ) + "s";
+
+
+        container.appendChild(
+          heart
+        );
+
+      }
+
+    }
+
+
+    /* =========================
+       START
+    ========================= */
+
+    updateClock();
+
+    createFloatingHearts();
+
+
+    /*
+     * Update setiap detik
+     * supaya jam selalu realtime.
+     */
+
+    setInterval(
+      updateClock,
+      1000
+    );
+
+
+  </script>
+
+
+</body>
+
+</html>
