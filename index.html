@@ -100,12 +100,11 @@
     .container {
 
       position: relative;
-
       z-index: 1;
-
       width: min(700px, 100%);
-
       text-align: center;
+      padding-top: clamp(30px, 6vh, 60px);
+    
     }
 
 
@@ -165,6 +164,93 @@
         0 10px 30px rgba(160, 91, 113, .12);
     }
 
+    /* =========================
+      LOVE BUTTON
+    ========================= */
+
+    .love-button {
+      margin-top: 22px;
+
+      padding: 10px 22px;
+
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, .65);
+
+      color: #d87998;
+
+      font-family: 'DM Sans', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 10px 30px rgba(160, 91, 113, .10);
+
+      backdrop-filter: blur(10px);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .love-button:hover {
+      transform: translateY(-2px) scale(1.03);
+
+      box-shadow:
+        0 14px 35px rgba(160, 91, 113, .16);
+    }
+
+    .love-button:active {
+      transform: scale(.95);
+    }
+
+
+    /* =========================
+      LOVE ANIMATION
+    ========================= */
+
+    .love-pop {
+      position: fixed;
+
+      pointer-events: none;
+
+      z-index: 999;
+
+      font-size: 20px;
+
+      animation: lovePop 1.4s ease-out forwards;
+    }
+
+    @keyframes lovePop {
+
+      0% {
+        transform:
+          translate(-50%, -50%)
+          scale(.3);
+
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform:
+          translate(
+            calc(-50% + var(--x)),
+            calc(-50% - var(--y))
+          )
+          scale(1.4)
+          rotate(var(--rotate));
+
+        opacity: 0;
+      }
+
+    }
 
     /* =========================
        DATE
@@ -330,6 +416,11 @@
       00:00
     </div>
 
+    <!-- BUTTON -->
+
+    <button class="love-button" id="loveButton">
+      klik lagi yaaa 💗
+    </button>
 
     <!-- TANGGAL -->
 
@@ -653,6 +744,77 @@
 
     }
 
+    /* =========================
+      LOVE BUTTON ANIMATION
+    ========================= */
+
+        document
+          .getElementById("loveButton")
+          .addEventListener("click", function () {
+
+            const button = this;
+            const rect = button.getBoundingClientRect();
+
+            const hearts = [
+              "💗",
+              "💖",
+              "💕",
+              "💓",
+              "💞",
+              "♥"
+            ];
+
+            for (let i = 0; i < 10; i++) {
+
+              const love =
+                document.createElement("div");
+
+              love.className = "love-pop";
+
+              love.textContent =
+                hearts[
+                Math.floor(
+                  Math.random() * hearts.length
+                )
+                ];
+
+              love.style.left =
+                rect.left +
+                rect.width / 2 +
+                "px";
+
+              love.style.top =
+                rect.top +
+                rect.height / 2 +
+                "px";
+
+              love.style.setProperty(
+                "--x",
+                (Math.random() * 160 - 80) + "px"
+              );
+
+              love.style.setProperty(
+                "--y",
+                (80 + Math.random() * 130) + "px"
+              );
+
+              love.style.setProperty(
+                "--rotate",
+                (Math.random() * 60 - 30) + "deg"
+              );
+
+              love.style.animationDelay =
+                (Math.random() * .15) + "s";
+
+              document.body.appendChild(love);
+
+              setTimeout(() => {
+                love.remove();
+              }, 1600);
+
+            }
+
+          });
 
     /* =========================
        START
