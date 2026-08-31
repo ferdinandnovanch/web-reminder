@@ -318,8 +318,8 @@
       GANTI NAMA DI SINI
     -->
 
-    <h1>
-      alooo kamuuu
+    <h1 id="greeting">
+      good morning
     </h1>
 
 
@@ -373,7 +373,6 @@
     /* =========================
        REMINDER BERDASARKAN JAM
     ========================= */
-
 
     function getReminder(hour) {
 
@@ -507,6 +506,10 @@
       const minute =
         now.getMinutes();
 
+      document
+        .getElementById("greeting")
+        .textContent =
+        getGreeting(hour);
 
       /*
        * JAM
@@ -569,6 +572,23 @@
 
     }
 
+    function getGreeting(hour) {
+
+        if (hour >= 5 && hour < 12) {
+          return "good morning";
+        }
+
+        if (hour >= 12 && hour < 18) {
+          return "good afternoon";
+        }
+
+        if (hour >= 18 && hour < 22) {
+          return "good evening";
+        }
+
+        return "goodnight";
+
+      }
 
     /* =========================
        FLOATING HEARTS
