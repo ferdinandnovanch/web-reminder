@@ -104,7 +104,7 @@
       width: min(700px, 100%);
       text-align: center;
       padding-top: clamp(30px, 6vh, 60px);
-    
+
     }
 
 
@@ -228,8 +228,7 @@
 
       0% {
         transform:
-          translate(-50%, -50%)
-          scale(.3);
+          translate(-50%, -50%) scale(.3);
 
         opacity: 0;
       }
@@ -240,12 +239,8 @@
 
       100% {
         transform:
-          translate(
-            calc(-50% + var(--x)),
-            calc(-50% - var(--y))
-          )
-          scale(1.4)
-          rotate(var(--rotate));
+          translate(calc(-50% + var(--x)),
+            calc(-50% - var(--y))) scale(1.4) rotate(var(--rotate));
 
         opacity: 0;
       }
@@ -419,7 +414,7 @@
     <!-- BUTTON -->
 
     <button class="love-button" id="loveButton">
-      klik lagi yaaa 💗
+      coba pencet deh
     </button>
 
     <!-- TANGGAL -->
@@ -659,21 +654,21 @@
 
     function getGreeting(hour) {
 
-        if (hour >= 5 && hour < 12) {
-          return "good morning";
-        }
-
-        if (hour >= 12 && hour < 18) {
-          return "good afternoon BUJANG";
-        }
-
-        if (hour >= 18 && hour < 22) {
-          return "good evening";
-        }
-
-        return "goodnight";
-
+      if (hour >= 5 && hour < 12) {
+        return "good morning";
       }
+
+      if (hour >= 12 && hour < 18) {
+        return "good afternoon BUJANG";
+      }
+
+      if (hour >= 18 && hour < 22) {
+        return "good evening";
+      }
+
+      return "goodnight";
+
+    }
 
     /* =========================
        FLOATING HEARTS
@@ -748,73 +743,73 @@
       LOVE BUTTON ANIMATION
     ========================= */
 
-        document
-          .getElementById("loveButton")
-          .addEventListener("click", function () {
+    document
+      .getElementById("loveButton")
+      .addEventListener("click", function () {
 
-            const button = this;
-            const rect = button.getBoundingClientRect();
+        const button = this;
+        const rect = button.getBoundingClientRect();
 
-            const hearts = [
-              "💗",
-              "💖",
-              "💕",
-              "💓",
-              "💞",
-              "♥"
+        const hearts = [
+          "💗",
+          "💖",
+          "💕",
+          "💓",
+          "💞",
+          "♥"
+        ];
+
+        for (let i = 0; i < 10; i++) {
+
+          const love =
+            document.createElement("div");
+
+          love.className = "love-pop";
+
+          love.textContent =
+            hearts[
+            Math.floor(
+              Math.random() * hearts.length
+            )
             ];
 
-            for (let i = 0; i < 10; i++) {
+          love.style.left =
+            rect.left +
+            rect.width / 2 +
+            "px";
 
-              const love =
-                document.createElement("div");
+          love.style.top =
+            rect.top +
+            rect.height / 2 +
+            "px";
 
-              love.className = "love-pop";
+          love.style.setProperty(
+            "--x",
+            (Math.random() * 160 - 80) + "px"
+          );
 
-              love.textContent =
-                hearts[
-                Math.floor(
-                  Math.random() * hearts.length
-                )
-                ];
+          love.style.setProperty(
+            "--y",
+            (80 + Math.random() * 130) + "px"
+          );
 
-              love.style.left =
-                rect.left +
-                rect.width / 2 +
-                "px";
+          love.style.setProperty(
+            "--rotate",
+            (Math.random() * 60 - 30) + "deg"
+          );
 
-              love.style.top =
-                rect.top +
-                rect.height / 2 +
-                "px";
+          love.style.animationDelay =
+            (Math.random() * .15) + "s";
 
-              love.style.setProperty(
-                "--x",
-                (Math.random() * 160 - 80) + "px"
-              );
+          document.body.appendChild(love);
 
-              love.style.setProperty(
-                "--y",
-                (80 + Math.random() * 130) + "px"
-              );
+          setTimeout(() => {
+            love.remove();
+          }, 1600);
 
-              love.style.setProperty(
-                "--rotate",
-                (Math.random() * 60 - 30) + "deg"
-              );
+        }
 
-              love.style.animationDelay =
-                (Math.random() * .15) + "s";
-
-              document.body.appendChild(love);
-
-              setTimeout(() => {
-                love.remove();
-              }, 1600);
-
-            }
-
-          });
+      });
 
     /* =========================
        START
